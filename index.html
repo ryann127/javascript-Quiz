@@ -4,18 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Code Quiz</title>
+    <link rel="stylesheet" href="./assets/reset.css" />
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-    <div id="start-screen">
-     <h1>Code Quiz</h1>
-     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt iusto numquam veritatis molestias accusamus consequatur? Quisquam, molestiae excepturi architecto corrupti, eius a tempora deleniti rerum consequatur odit nobis assumenda ratione.</p>
-     <button id="start">Start</button>
-    </div>
-    <div id="question-screen">
+    <header>
+        <div>
+            <a href=#highscore-screen class = "highscore-btn"> View Highscores</a>
+        </div>
+    
+    </header>
 
+    <div class ="start-screen">
+        <div id="home" class="flex-column flex-center">
+            <h2>Code Quiz Challenge</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt iusto numquam veritatis molestias accusamus consequatur? Quisquam, molestiae excepturi architecto corrupti, eius a tempora deleniti rerum consequatur odit nobis assumenda ratione.</p>
+            <button class="start-button">Start</button>
+        </div>
+    </div> 
+
+    <div id="question-screen" class="flex-column flex-center">;
+        <div>
+            <div class = "timer-text">
+            <div class="small-font timer-count"> </div>
+        </div>
+        <section class="word-blank">
+
+        </section>
     </div>
+
+
     <script src="./assets/script.js"></script>
 </body>
-</html>
+</html>  
