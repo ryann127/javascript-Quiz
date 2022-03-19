@@ -85,6 +85,10 @@ h2 {
     transform: none;
 }
 
+header {
+    margin-top: 35px;
+}
+
 .highscore-btn {
     text-decoration: none;
     padding: 35px;
@@ -108,4 +112,14 @@ h2 {
     box-shadow: 0 0.4rem 1.4rem 0 hotpink;
     transition: transform 150ms;
     transform: scale(1.03)
+}
+
+#word-blank {
+    font-size: 25px; 
+    color: hotpink;
+}
+
+.timer-count {
+    font-size: 25px;
+    color: hotpink;
 }
