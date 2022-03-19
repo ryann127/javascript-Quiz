@@ -16,7 +16,7 @@ The game is over when the last question is reached and/or the timer has reached 
 
 https://ryann127.github.io/javascript-Quiz/
 
-![Screenshot of Quiz](Assets/Images/CodeQuiz.gif)
+![Screenshot of Quiz](assets/images/CodeQuiz.gif)
 
 ## Contributors
 - Ryann Goldberg (ryann.goldberg127@gmail.com)
