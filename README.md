@@ -12,9 +12,9 @@ The timer will reflect if the answer was correct or incorrect.
 
 The game is over when the last question is reached and/or the timer has reached zero.
 
-## Website Link and Screenshot
+## Website Link and GIF
 
-<!-- https://ryann127.github.io/advanced-CSS-RGportfolio/ -->
+https://ryann127.github.io/javascript-Quiz/
 
 ![Screenshot of Website](Assets/Images/finalwebsite.png)
 
