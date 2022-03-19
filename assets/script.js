@@ -93,7 +93,7 @@ function startTimer(){
         if (isWrong && timerCount >=5) {
             timerCount = timerCount - 5;
         } 
-        if (timerCount <= 0) {
+        if (timerCount <= 0 || questions[i]>=questions.length) {
             clearInterval(timer);
             gameOver();
         }
@@ -106,7 +106,7 @@ function rightAnswer() {
     winCounter++;
     startButton.disabled = false; // necessary?
 
-    getWins();
+    // getWins();
 }
 
 // function getWins() {
@@ -126,7 +126,7 @@ function rightAnswer() {
 function gameOver() {
 
     questionScreen.setAttribute("class", "hide");
-    timerElement.textContent("");
+    timerElement.textContent= (" ");
 
     wordBlank.textContent = "Game Over!";
     
@@ -204,6 +204,8 @@ function checkAnswer(event) {
         isWrong = true; 
         wordBlank.textContent = "Wrong!";
     };
+
+   
 
     //increment currentQuestion by 1
     currentQuestion++;
