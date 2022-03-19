@@ -5,16 +5,17 @@ var startButton = document.querySelector(".start-button");
 var questionScreen = document.querySelector("#question-screen");
 var timerElement = document.querySelector(".timer-count"); 
 var wordBlank = document.querySelector("#word-blank"); 
-var resetButton = document.querySelector(".reset-button")
-var winElement = document.querySelector("#win-game");
-var highscoreElement = document.querySelector("#highscore-title");
-
+var resetButton = document.querySelector(".reset-button");
+var scoreElement = document.querySelector(".score");
+var scoreScreen = document.querySelector("#submit-form")
 
 var timerCount;
-var winCounter = 0;
+var scoreCounter = 0;
 var timer; 
 var isCorrect = false; 
 var isWrong = false; 
+var currentQuestion = 0; 
+var score;
 
 // create a variable for our questions
 var questions = [
@@ -29,7 +30,7 @@ var questions = [
         correct: "Body Section",
     },
     {
-        name: "Inside which HTMl element do we put the JavaScript",
+        name: "Inside which HTML element do we put the JavaScript",
         answers: ["scripting", "script", "js", "javascript"],
         correct: "js",
     },
@@ -61,15 +62,17 @@ var questions = [
 ];
 
 
+function init() {
+    getWins();
+};
 
 
-var currentQuestion = 0; 
 //create function to start quiz
 function startQuiz() {
     console.log("starting quiz");
     //hide start screen 
     startScreen.setAttribute("class", "hide");
-    highscoreBtn.setAttribute("class", "hide");
+    
     // display first question
 
     isWin = false; 
@@ -84,44 +87,44 @@ function startQuiz() {
 
 function startTimer(){
     console.log("timer");
+    
     var timer = setInterval(function() {
         timerCount--; 
         timerElement.textContent = "Time Left: " + timerCount; 
         if (timerCount >= 0 && isCorrect) {
-            rightAnswer();
+            scoreCounter++;
+            setWins();
         }
         if (isWrong && timerCount >=5) {
             timerCount = timerCount - 5;
         } 
-        if (timerCount <= 0 || questions[i]>=questions.length) {
+        if (timerCount <= 0 || currentQuestion >= questions.length) {
             clearInterval(timer);
             gameOver();
         }
 
     }, 1000);
     
-}
+};
 
-function rightAnswer() {
-    winCounter++;
-    startButton.disabled = false; // necessary?
+function setWins() {
+    scoreElement.textContent = scoreCounter;
 
-    // getWins();
-}
+    localStorage.setItem('scoreCount', scoreCounter);
 
-// function getWins() {
+};
 
-//   var storedWins = localStorage.getItem("winCount"); 
-//   if (storedWins === null) {
-//     winCounter = 0;
-//   } else {
-//     winCounter = storedWins;
-//   }
-//   winElement.textContent = winCounter;
+function getWins() {
 
+  var storedScore = localStorage.getItem("scoreCount"); 
+  if (storedScore === null) {
+    scoreCounter = 0;
+  } else {
+    scoreCounter = storedScore;
+  }
+  scoreElement.textContent = scoreCounter;
 
-
-// }
+};
 
 function gameOver() {
 
@@ -129,47 +132,23 @@ function gameOver() {
     timerElement.textContent= (" ");
 
     wordBlank.textContent = "Game Over!";
-    
-    var enterInitials = document.createElement("h1"); 
-    enterInitials.innerHTML = "Enter your initials";
 
-    var scoreForm = document.createElement("form");
+    var endTemplate = ` 
+    <h2> Submit Your Score </h2>
+    <form id= "submit-form" class="score form"> 
+        <label for="name"> Name and Score </label>
+        <input type="text" name="score" id="score">
+        <button type="submit">Enter</button>
+    </form>
+    `
 
-    var inputText = document.createElement("input");
-    inputText.setAttribute("type", "text");
+    scoreScreen.innerHTML = endTemplate;
 
-    var submitButton = document.createElement("button");
-    submitButton.setAttribute("class", "submit-button");
-    submitButton.innerHTML = "Submit";
-
-    scoreForm.appendChild(inputText);
-    scoreForm.appendChild(submitButton);
-
-    winElement.appendChild(enterInitials);
-    winElement.appendChild(scoreForm);
-
-function storeScore() {
-    localStorage.setItem("score", JSON.stringify(scoreList));
-    }
-
-scoreForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    var initialText = inputText.value.trim();
-
-    if (initialText === "") {
-    return;
-    }
-
-    scoreList.push(initialText + "-" + timerCount);
-    inputText.value = "";
-
-    storeScore();
-    // highscoreList();
-  });
 };
-
+    
 // create a function that displays questions
 function questionDisplay() {
+
     
     // create a template to inject questions into
     var template = `
@@ -219,3 +198,7 @@ startButton.addEventListener("click", startQuiz);
 document.addEventListener("click", checkAnswer);
 // attach event listener to reset highscore
 // resetButton.addEventListener("click", winCounter=0);
+scoreScreen.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log("form has been submitted");
+});

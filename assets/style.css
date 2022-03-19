@@ -92,6 +92,7 @@ header {
 .highscore-btn {
     text-decoration: none;
     padding: 35px;
+    margin-left: 75px;
     color: hotpink;
 }
 
@@ -117,9 +118,27 @@ header {
 #word-blank {
     font-size: 25px; 
     color: hotpink;
+    padding: 35px;
 }
 
 .timer-count {
     font-size: 25px;
     color: hotpink;
+}
+
+.highscore-screen {
+    font-size: 65px;
+    color: turquoise;
+    display: flex;
+    justify-content: center;
+}
+
+div {
+    display: flex;
+    flex-direction: row;
+}
+
+section {
+    display: flex; 
+    justify-content: center; 
 }
