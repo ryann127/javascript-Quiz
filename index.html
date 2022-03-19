@@ -11,34 +11,39 @@
 <body>
     <header>
         <div>
-            <a href=#highscore-screen class = "highscore-btn"> View Highscores</a>
+            <a href=#last-screen class = "highscore-btn"> View Highscores</a>
         </div>
     
     </header>
 
-    <div class ="start-screen">
+    <div class="start-screen">
         <div id="home" class="flex-column flex-center">
             <h2>Code Quiz Challenge</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt iusto numquam veritatis molestias accusamus consequatur? Quisquam, molestiae excepturi architecto corrupti, eius a tempora deleniti rerum consequatur odit nobis assumenda ratione.</p>
+            <p class = "small-font"> Test your Javascript knowledge! </p>
             <button class="start-button">Start</button>
         </div>
     </div> 
 
-    <div id="question-screen" class="flex-column flex-center"></div>;
+    <div id="question-screen" class="flex-column flex-center"></div>
+
+    <div class = "score"> </div>
  
-    <section>
-        <form id= "submit-form" class="score form"> </form>
-    </section>
+        <section class = hide id="last-screen">
+            <!-- <form id= "submit-form" class="form"> </form> -->   
+            <form id= "submit-form" class="score form"> 
+                <label for="name"> Name and Score </label>
+                <input type="text" name="score" id="inputName">
+                <button type="submit">Enter</button>
+                <button class="reset-button">Reset Game</button>
+            </form>  
+        </section>
 
     <div>
         <div>
-            <div>
             <div class="small-font timer-count"> </div>
         </div>
          
-        <div id="word-blank">
-
-        </div>
+        <div id="word-blank"></div>
     </div>
 
 

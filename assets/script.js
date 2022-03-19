@@ -7,7 +7,7 @@ var timerElement = document.querySelector(".timer-count");
 var wordBlank = document.querySelector("#word-blank"); 
 var resetButton = document.querySelector(".reset-button");
 var scoreElement = document.querySelector(".score");
-var scoreScreen = document.querySelector("#submit-form")
+var scoreScreen = document.querySelector("#last-screen")
 
 var timerCount;
 var scoreCounter = 0;
@@ -26,7 +26,7 @@ var questions = [
     },
     {
         name: "Where is the correct place to insert JavaScript",
-        answers: ["Body Section","Head Section", "Both body and head sections will work"],
+        answers: ["Body Section","Head Section", "Both body and head sections will work", "Neither"],
         correct: "Body Section",
     },
     {
@@ -122,27 +122,19 @@ function getWins() {
   } else {
     scoreCounter = storedScore;
   }
-  scoreElement.textContent = scoreCounter;
+  scoreElement.textContent = storedScore;
 
 };
 
 function gameOver() {
 
+    document.getElementById("last-screen").classList.remove('hide');
+    scoreScreen.setAttribute("class", "column");
     questionScreen.setAttribute("class", "hide");
     timerElement.textContent= (" ");
 
     wordBlank.textContent = "Game Over!";
 
-    var endTemplate = ` 
-    <h2> Submit Your Score </h2>
-    <form id= "submit-form" class="score form"> 
-        <label for="name"> Name and Score </label>
-        <input type="text" name="score" id="score">
-        <button type="submit">Enter</button>
-    </form>
-    `
-
-    scoreScreen.innerHTML = endTemplate;
 
 };
     
@@ -197,7 +189,8 @@ startButton.addEventListener("click", startQuiz);
 // attach event listener to entire doc to check answers
 document.addEventListener("click", checkAnswer);
 // attach event listener to reset highscore
-// resetButton.addEventListener("click", winCounter=0);
+resetButton.addEventListener("click", scoreCounter=0, startQuiz);
+resetButton.addEventListener("click", startQuiz);
 scoreScreen.addEventListener("submit", (e) => {
     e.preventDefault();
     console.log("form has been submitted");
