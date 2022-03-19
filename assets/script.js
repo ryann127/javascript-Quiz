@@ -92,7 +92,6 @@ function startTimer(){
         timerCount--; 
         timerElement.textContent = "Time Left: " + timerCount; 
         if (timerCount >= 0 && isCorrect) {
-            scoreCounter++;
             setWins();
         }
         if (isWrong && timerCount >=5) {
@@ -108,6 +107,7 @@ function startTimer(){
 };
 
 function setWins() {
+
     scoreElement.textContent = scoreCounter;
 
     localStorage.setItem('scoreCount', scoreCounter);
@@ -169,7 +169,8 @@ function checkAnswer(event) {
     }
 
     if (answerChosen === questions[currentQuestion].correct) {
-        isCorrect = true; 
+        isCorrect = true;
+        scoreCounter++;
         wordBlank.textContent = "Correct!";
     } else {
         isWrong = true; 
